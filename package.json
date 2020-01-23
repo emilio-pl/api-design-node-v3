@@ -16,12 +16,13 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
-    "bcrypt": "^3.0.2",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "cuid": "^2.1.4",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
+    "fsevents": "^2.1.2",
     "jsonwebtoken": "^8.4.0",
     "lodash": "^4.17.11",
     "mongoose": "^5.3.13",
@@ -49,10 +50,11 @@
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
     "jest": "^23.6.0",
-    "mock-req-res": "^1.0.2",
+    "mock-req-res": "^1.1.4",
     "nodemon": "^1.18.3",
     "prettier": "^1.15.2",
     "rimraf": "^2.6.2",
+    "sinon": "^8.1.1",
     "supertest": "^3.3.0"
   },
   "jest": {
