@@ -4,22 +4,24 @@ import morgan from 'morgan'
 import cors from 'cors'
 
 export const app = express()
+const router = express.Router()
 
 app.disable('x-powered-by')
-
 app.use(cors())
 app.use(json())
 app.use(urlencoded({ extended: true }))
 app.use(morgan('dev'))
 
-const log = (req, res, next) => {
-	console.log('logging')
-	req.mydata = 'hello11'
-	next()
-}
+router.get('/router', (req, res) => {
+	res.json({ me: 'holis' })
+})
 
-app.get('/data', log, (req, res) => {
-	res.send({ message: req.mydata })
+// app.use(router) // another way to implement it
+// the difference is that it won't have /api as route
+app.use('/api', router)
+
+app.get('/data', (req, res) => {
+	res.send({ message: 'holis' })
 })
 
 app.post('/data', (req, res) => {
@@ -27,15 +29,15 @@ app.post('/data', (req, res) => {
 	res.send({ message: 'okay' })
 })
 
-app.get(/^(me)[A-Za-z]*/, log, (req, res) => {
+app.get(/^(me)[A-Za-z]*/, (req, res) => {
 	res.send({ message: 'entrando a me' })
 })
 
-app.get('/user*', log, (req, res) => {
+app.get('/user*', (req, res) => {
 	res.send({ message: req.route })
 })
 
-app.get('/:id/nice', log, (req, res) => {
+app.get('/:id/nice', (req, res) => {
 	res.send({ message: req.params })
 })
 
